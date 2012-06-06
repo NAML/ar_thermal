@@ -21,7 +21,9 @@
 // if you're using Arduino 23 or earlier, uncomment the next line
 //#include "NewSoftSerial.h"
 
+#include "sem_256_f.cpp"
 #include "sem_256.cpp"
+#include "wei.cpp"
 
 
 int printer_RX_Pin = 2;  // this is the green wire
@@ -57,9 +59,14 @@ void loop(){
     //printer.feed(4);
     //printer.test();
     // h x w  = 150 * 143
+    printer.printBitmap(151,189, wei);
+    delay(1000);
     printer.printBitmap(256, 256, semilla);
+    delay(1000);
+    printer.printBitmap(256, 256, semilla_f);
     printer.feed(1);
-    while(1){;}
+    delay(1000);
+//    while(1){;}
 //  delay(500);
   
 }
