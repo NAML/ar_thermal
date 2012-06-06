@@ -1,5 +1,6 @@
 #include <Adafruit_Thermal.h>
 
+
 /*************************************************** 
   This is an example sketch for the Adafruit Thermal Printer
   
