@@ -63,36 +63,27 @@ void loop(){
   digitalWrite(13, LOW);
 
   long random_option =  random(0,1000);
+  
+  
   long direccion_wei = random(0,30);
   long idioma_texto = random(0,100);
-  int  mugre = (int) random(0,10);
+  long mugre = random(0,100);
   
   int option = 0;
 
-  if(random_option < 450){
+  if(random_option < 400){
     option = 0;
  //   ledBlink(1);
-  } 
-  else if (random_option < 900) {
+  } else if (random_option < 800) {
     option = 1;
  //   ledBlink(2);
-  } 
-  else if (random_option < 980) {
+  } else if (random_option < 950) {
     option = 2;
  //   ledBlink(3);
-  }
-  else {
+  }  else {
     option = 3;
  //   ledBlink(4);
   }
-
-//  delay(1000);
-
-
-
-
-  // engania pichanga
-  //option = 3;
 
    printer.begin();
    printer.setDefault();
@@ -100,22 +91,27 @@ void loop(){
   switch(option) {
 
   case 0:
-    printer.printBitmap(256, 256, semilla_f + mugre);
+
+    if(mugre < 5){
+      printer.printBitmap(256, 256, semilla_f + 16);
+    }else{
+      printer.printBitmap(256, 256, semilla_f);
+    }
     break;
 
   case 1:
-    printer.printBitmap(256, 256, semilla + mugre);
+
+    if(mugre < 5){
+      printer.printBitmap(256, 256, semilla + 16);
+    }else{
+      printer.printBitmap(256, 256, semilla);
+    }
+
     break;
 
   case 2:
   
     printer.printBitmap(144,180, wei_f);
-    
-    if(direccion_wei < 29){
-  
-    } else {
-    //  printer.printBitmap(151,189, wei);
-    }
     
     break;
 
@@ -147,7 +143,7 @@ void loop(){
     break;
   }
   
-    delay(6000);
+    delay(30 * 1000);
 }
 
 
